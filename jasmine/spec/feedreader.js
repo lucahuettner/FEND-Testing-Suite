@@ -31,9 +31,9 @@ $(function() {
          * and that the URL is not empty.
          */
         it('url is defined an not empty', function() {
-            allFeeds.forEach(function(obj) {
-              expect(obj.url).toBeDefined();
-              expect(obj.url).not.toBe('');
+            allFeeds.forEach(function(feed) {
+              expect(feed.url).toBeDefined();
+              expect(feed.url).not.toBe('');
             });
           });
 
@@ -42,9 +42,9 @@ $(function() {
          * and that the name is not empty.
          */
         it('name is defined an not empty', function() {
-            allFeeds.forEach(function(obj) {
-              expect(obj.name).toBeDefined();
-              expect(obj.name).not.toBe('');
+            allFeeds.forEach(function(feed) {
+              expect(feed.name).toBeDefined();
+              expect(feed.name).not.toBe('');
             });
           });
       });
@@ -86,14 +86,11 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
         beforeEach(function(done) {
-          loadFeed(0, function() {
-            done();
-          });
+          loadFeed(0, done);
         });
-        it('are defined', function(done) {
+        it('are defined', function() {
           const feed = document.querySelectorAll('.feed .entry');
-          expect(feed.length).toBeGreaterThan(1);
-          done();
+          expect(feed.length).toBeGreaterThan(0);
         });
       });
 
@@ -102,7 +99,7 @@ $(function() {
         let firstContent = '';
         let secondContent = '';
 
-        /* TODO: Write a test that ensures when a new feed is loaded
+        /* Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
